@@ -23,12 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 import json
 
 ROOT_DIR = os.path.dirname(BASE_DIR)
-print(ROOT_DIR)
-SECRETS = json.load(open(os.path.join(ROOT_DIR, 'secrets.json')))
+SECRET_DIR = os.path.dirname(ROOT_DIR)
+SECRETS = json.load(open(os.path.join(SECRET_DIR, 'secrets.json')))
 
 SECRET_KEY = SECRETS["SECRET_KEY"]
 
-# SECRET_KEY = '+%zjb6s0n@hdj)$#6)qqyh=6@w$buzw+^9mrg27xtp=h5*_-+k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
