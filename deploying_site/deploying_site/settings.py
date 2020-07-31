@@ -20,7 +20,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+%zjb6s0n@hdj)$#6)qqyh=6@w$buzw+^9mrg27xtp=h5*_-+k'
+import json
+
+ROOT_DIR = os.path.dirname(BASE_DIR)
+JSON_FILE = os.path.join(ROOT_DIR, 'secrets.json')
+
+python_data = json.loads(JSON_FILE)
+
+SECRET_KEY = python_data["SECRET_KEY"]
+
+# SECRET_KEY = '+%zjb6s0n@hdj)$#6)qqyh=6@w$buzw+^9mrg27xtp=h5*_-+k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,7 +85,7 @@ WSGI_APPLICATION = 'deploying_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(ROOT_DIR, 'db.sqlite3'),
     }
 }
 
@@ -103,9 +112,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
